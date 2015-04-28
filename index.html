@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cat Clicker</title>
+	</head>
+	<body>
+	<img id="catPic" src="cat.jpg"/>
+	<br/>
+	<em id="clicks">Click count: 0</em>
+</body>
+</html>
+
+<script type="text/javascript">
+	var clickCount = 0;
+	var elem = document.getElementById('catPic');
+	elem.addEventListener('click', function(){
+		clickCount += 1;
+		document.getElementById("clicks").innerHTML = "Click count: " + clickCount;
+	}, false);
+</script>
