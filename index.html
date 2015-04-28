@@ -4,17 +4,53 @@
 		<title>Cat Clicker</title>
 	</head>
 	<body>
-	<img id="catPic" src="cat.jpg"/>
-	<br/>
-	<em id="clicks">Click count: 0</em>
+	<div class="float halfWidth">
+		<h3 id="catName"> Jimmy </h3>
+		<img class="fullWidth" id="catPic" src="cat.jpg"/>
+		<br/>
+		<em id="clicks">Click count: 0</em>
+	</div>
+	<div class="float halfWidth">
+		<h3 id="catName2"> Jimmy </h3>
+		<img class="fullWidth" id="catPic2" src="cat2.jpg"/>
+		<br/>
+		<em id="clicks2">Click count: 0</em>
+	</div>
 </body>
 </html>
 
 <script type="text/javascript">
+	var cats = [["Jimmy", "cat.jpg"], ["Scott", "cat2.jpg"]];
+	document.getElementById("catName").innerHTML = cats[0][0];
+	document.getElementById("catName2").innerHTML = cats[1][0];
+	document.getElementById("catPic").innerHTML = cats[0][1];
+	document.getElementById("catPic2").src = cats[1][1];
+
 	var clickCount = 0;
 	var elem = document.getElementById('catPic');
 	elem.addEventListener('click', function(){
 		clickCount += 1;
 		document.getElementById("clicks").innerHTML = "Click count: " + clickCount;
 	}, false);
+
+	var clickCount2 = 0;
+	var elem2 = document.getElementById('catPic2');
+	elem2.addEventListener('click', function(){
+		clickCount2 += 1;
+		document.getElementById("clicks2").innerHTML = "Click count: " + clickCount2;
+	}, false);
 </script>
+
+<style type="text/css">
+	.fullWidth {
+		max-width: 100%;
+		width: 100%;
+	}
+	.halfWidth {
+		max-width: 50%;
+		width: 50%;
+	}
+	.float {
+		float: left;
+	}
+</style>
