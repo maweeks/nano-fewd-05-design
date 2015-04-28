@@ -5,40 +5,39 @@
 	</head>
 	<body>
 	<div class="float halfWidth">
-		<h3 id="catName"> Jimmy </h3>
-		<img class="fullWidth" id="catPic" src="cat.jpg"/>
-		<br/>
-		<em id="clicks">Click count: 0</em>
+		<ul id="catList"><li>CatList</li></ul>
 	</div>
 	<div class="float halfWidth">
-		<h3 id="catName2"> Jimmy </h3>
-		<img class="fullWidth" id="catPic2" src="cat2.jpg"/>
+		<h3 id="catName"> Jimmy </h3>
+		<img class="fullWidth" id="catPic" src="cat2.jpg"/>
 		<br/>
-		<em id="clicks2">Click count: 0</em>
+		<em id="clicks">Click count: 0</em>
 	</div>
 </body>
 </html>
 
 <script type="text/javascript">
-	var cats = [["Jimmy", "cat.jpg"], ["Scott", "cat2.jpg"]];
-	document.getElementById("catName").innerHTML = cats[0][0];
-	document.getElementById("catName2").innerHTML = cats[1][0];
-	document.getElementById("catPic").innerHTML = cats[0][1];
-	document.getElementById("catPic2").src = cats[1][1];
+	var cats = [["Abby", "cat.jpg", 0], ["Dave", "cat2.jpg", 0], ["Jack", "cat3.jpg", 0], ["Jimmy", "cat4.jpg", 0], ["Scot", "cat5.jpg", 0]];
+	var currentCat;
 
-	var clickCount = 0;
-	var elem = document.getElementById('catPic');
-	elem.addEventListener('click', function(){
-		clickCount += 1;
-		document.getElementById("clicks").innerHTML = "Click count: " + clickCount;
-	}, false);
+	catPic.addEventListener('click', function() {
+		cats[currentCat][2] += 1;
+		document.getElementById("clicks").innerHTML = "Click count: " + cats[currentCat][2];
+	});
+	var catListHTML = "";
+	for (var i = 0; i < cats.length; i++) {
+		catListHTML += "<li><a href='javascript:changeCat(" + i + ");'>" + cats[i][0] + "</a></li>"
+	}
 
-	var clickCount2 = 0;
-	var elem2 = document.getElementById('catPic2');
-	elem2.addEventListener('click', function(){
-		clickCount2 += 1;
-		document.getElementById("clicks2").innerHTML = "Click count: " + clickCount2;
-	}, false);
+	document.getElementById("catList").innerHTML = catListHTML;
+	changeCat(0);
+	function changeCat(catNo) {
+		document.getElementById("catName").innerHTML = cats[catNo][0];
+		var catPic = document.getElementById("catPic")
+		catPic.src = cats[catNo][1];
+		document.getElementById("clicks").innerHTML = "Click count: " + cats[catNo][2];
+		currentCat = catNo;
+	}
 </script>
 
 <style type="text/css">
